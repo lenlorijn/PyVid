@@ -1,23 +1,22 @@
 import sys
-import cv
+import cv2 as cv
 import datetime
 
-capture = cv.CaptureFromCAM(1)
-cv.SetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_WIDTH, 1080)
-cv.SetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_HEIGHT, 1920)
+capture = cv.VideoCapture(1)
+capture.set(4,1080)
+capture.set(5,1920)
 
 if not capture:
   print "Error opening capture device"
   sys.exit(1)
 
 while 1:
-  frame = cv.QueryFrame(capture)
+  ret,frame = capture.read()
   if frame is None:
-    break
-
+    break 
   
   formated_string = datetime.datetime.now().strftime("%Y-%m-%d-%H%MZ-%f")
 
-  cv.SaveImage("pics/"+formated_string+".jpg",frame)
+  cv.imwrite("pics/"+formated_string+".jpg", frame, [int(cv.IMWRITE_JPEG_QUALITY), 80])
 
 
