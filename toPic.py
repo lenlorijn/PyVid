@@ -3,8 +3,9 @@ import cv2 as cv
 import datetime
 
 capture = cv.VideoCapture(1)
-capture.set(4,1080)
-capture.set(5,1920)
+capture.set(cv.cv.CV_CAP_PROP_FRAME_WIDTH,480)
+capture.set(cv.cv.CV_CAP_PROP_FRAME_HEIGHT,320)
+capture.set(cv.cv.CV_CAP_PROP_FPS,1)
 
 if not capture:
   print "Error opening capture device"
@@ -17,6 +18,7 @@ while 1:
   
   formated_string = datetime.datetime.now().strftime("%Y-%m-%d-%H%MZ-%f")
 
-  cv.imwrite("pics/"+formated_string+".jpg", frame, [int(cv.IMWRITE_JPEG_QUALITY), 80])
+  cv.imwrite("pics/"+formated_string+".jpg", frame, [int(cv.IMWRITE_JPEG_QUALITY), 60])
+
 
 
