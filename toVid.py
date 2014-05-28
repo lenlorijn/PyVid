@@ -17,7 +17,7 @@ while(capture.isOpened()):
   if ret==True:
 
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-    cv.putText(frame, date, (320,480), cv.FONT_HERSHEY_PLAIN, 1, 255)
+    cv.putText(frame, date, (320,470), cv.FONT_HERSHEY_PLAIN, 1, 1855)
 
     out.write(frame) 
 
