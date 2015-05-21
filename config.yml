@@ -1,10 +1,10 @@
 video:
   input: 
-    cameras: { webcam: 0, extracam: 1}
+    cameras: { webcam: 0}
     frameRate: 20.0
     width: 640
     height: 480
 
   output: 
-    dir: output/
+    dir: ../output/
     extension: .avi
